@@ -56,13 +56,13 @@
     </header>
 
     <main>
-      <section class="hero container">
-        <div>
+      <section class="hero container compress-hero">
+        <div class="hero-copy">
           <p class="eyebrow">Image optimization</p>
           <h1>Compress Images Without Sacrificing Quality</h1>
           <p>Fine-tune size, dimensions, and format for the perfect output.</p>
         </div>
-        <div class="hero-card glass">
+        <div class="hero-card glass compress-hero-card">
           <div class="compress-drop" id="compressDropZone">
             <div class="compress-drop-content">
               <div class="compress-drop-icon">[]</div>
@@ -77,7 +77,7 @@
 
       <section class="tool-shell container glass">
         <div class="tool-grid">
-          <div>
+          <div class="tool-card">
             <div class="compress-controls">
               <div class="control-row">
                 <label for="compressQuality">Compression level</label>
@@ -90,23 +90,29 @@
               <div class="control-row">
                 <label>Resize (px)</label>
                 <div class="resize-row">
-                  <input id="compressWidth" type="number" min="1" placeholder="Width" />
-                  <input id="compressHeight" type="number" min="1" placeholder="Height" />
+                  <input id="compressWidth" type="number" min="1" placeholder="Width (px)" />
+                  <input id="compressHeight" type="number" min="1" placeholder="Height (px)" />
                 </div>
+                <label class="ratio-toggle">
+                  <input type="checkbox" />
+                  Lock aspect ratio
+                </label>
               </div>
 
               <div class="control-row">
                 <label for="compressFormat">Format optimization</label>
-                <select id="compressFormat">
-                  <option value="jpg">JPG (smaller size)</option>
-                  <option value="webp">WEBP (best compression)</option>
-                </select>
+                <div class="select-field">
+                  <select id="compressFormat">
+                    <option value="jpg">JPG (smaller size)</option>
+                    <option value="webp">WEBP (best compression)</option>
+                  </select>
+                </div>
               </div>
             </div>
 
             <div class="compress-actions">
-              <button class="primary" id="selectCompressBtn" type="button">Select Images</button>
-              <button class="primary" id="compressBtn" type="button">Compress Now</button>
+              <button class="secondary" id="selectCompressBtn" type="button">Select Images</button>
+              <button class="primary primary-gradient" id="compressBtn" type="button">Compress Now</button>
               <button class="ghost" id="clearCompressBtn" type="button">Clear</button>
             </div>
 
@@ -118,9 +124,9 @@
             </div>
           </div>
 
-          <div class="compress-results">
+          <div class="compress-results panel-dashed">
             <div class="compress-results-header">
-              <h3>Optimized files</h3>
+              <h3>Optimized Files</h3>
               <span id="compressCount">0 files</span>
             </div>
             <ul class="compress-results-list" id="compressResults"></ul>
