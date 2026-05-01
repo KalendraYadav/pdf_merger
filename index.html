@@ -26,7 +26,7 @@
     <meta name="google-site-verification" content="7WRHbYPA7pp6aK4p_g5eyd7ag7VlhLMn7HLe6I0aFnQ" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="./favicon.ico" />
   
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,45 +34,9 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./src/styles/styles.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
   </head>
   <body>
-
-    <section id="seo-content">
-  <h1>Merge PDF Files Online for Free</h1>
-
-  <p>
-    Merge PDF app is a fast and secure online tool that allows you to merge multiple PDF files into one single document. 
-    Whether you need to combine reports, assignments, or documents, our free PDF merger makes the process simple and efficient.
-  </p>
-
-  <h2>How to Merge PDF Files</h2>
-  <ul>
-    <li>Upload your PDF files</li>
-    <li>Arrange them in the correct order</li>
-    <li>Click merge and download your file</li>
-  </ul>
-
-  <h2>Why Use Our PDF Merger?</h2>
-  <p>
-    Our tool is completely free and works directly in your browser. No installation or signup is required. 
-    Your files remain private and secure while merging.
-  </p>
-
-  <h2>Features</h2>
-  <ul>
-    <li>Merge unlimited PDF files</li>
-    <li>Fast processing</li>
-    <li>Secure file handling</li>
-    <li>Works on mobile and desktop</li>
-  </ul>
-
-  <h2>Upcoming Features</h2>
-  <p>
-    Soon you will be able to convert PDF to JPG, PNG, compress PDF files, and more advanced tools.
-  </p>
-</section>
-
     <header class="site-header">
       <nav class="navbar">
         <div class="brand">
@@ -95,6 +59,7 @@
       <section id="home" class="hero">
         <div class="hero-content">
           <p class="eyebrow">Fast. Clean. Secure.</p>
+          <h1>PDF Merge Pro</h1>
           <h2>Merge PDFs with zero friction.</h2>
           <p class="hero-subtitle">
             Drag, drop, reorder, and export a polished PDF in seconds. All in your browser.
@@ -180,13 +145,46 @@
       </section>
     </main>
 
+    <section id="seo-content" class="seo-section">
+      <div class="seo-container">
+        <p class="seo-pill">Merge PDFs in seconds</p>
+        <h2>Merge PDF Files Online</h2>
+
+        <p>
+          PDF Merge Pro helps you combine documents securely in your browser. Merge PDF files online with
+          zero uploads, fast processing, and a clean workflow that keeps your files private.
+        </p>
+
+        <h3>How to Merge PDFs</h3>
+        <ol>
+          <li>Upload your PDF files using the drop zone or Select PDFs button.</li>
+          <li>Drag to arrange the order exactly how you want it.</li>
+          <li>Click merge and download your new file instantly.</li>
+        </ol>
+
+        <h3>Why Use This Tool</h3>
+        <p>
+          You get a fast, reliable merge without installing software. Everything happens locally, so
+          your documents never leave your device.
+        </p>
+
+        <h3>Features</h3>
+        <ul>
+          <li>Unlimited PDF merging in one session</li>
+          <li>Drag-and-drop ordering with live updates</li>
+          <li>Secure, client-side processing</li>
+          <li>Works on desktop and mobile browsers</li>
+        </ul>
+      </div>
+    </section>
+
     <div class="loading" id="loadingOverlay" hidden>
       <div class="spinner"></div>
       <p>Merging PDFs...</p>
     </div>
 
     <script defer src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-    <script type="module" src="./src/main.js"></script>
+    <script src="./js/script.js" defer></script>
 
   </body>
 </html>
