@@ -376,6 +376,18 @@ main {
   transform: translateY(-1px) scale(1.02);
 }
 
+.select-pdf-btn {
+  height: 44px !important;
+  min-height: 44px !important;
+  padding: 0 20px !important;
+  font-size: 0.95rem !important;
+  line-height: 44px !important;
+  border-radius: 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
 .primary-gradient {
   background: linear-gradient(120deg, #2563eb, #3b82f6);
 }
