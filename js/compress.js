@@ -182,13 +182,24 @@
     ctx.drawImage(image, 0, 0, width, height);
     if (image.close) image.close();
 
-    const mime = format === "webp" ? "image/webp" : "image/jpeg";
-    const blob = await canvasToBlob(canvas, mime, quality);
+    let mime = "image/jpeg";
+    let ext = "jpg";
+    let outputQuality = quality;
+
+    if (format === "webp") {
+      mime = "image/webp";
+      ext = "webp";
+    } else if (format === "png") {
+      mime = "image/png";
+      ext = "png";
+      outputQuality = undefined;
+    }
+
+    const blob = await canvasToBlob(canvas, mime, outputQuality);
     const compressedUrl = URL.createObjectURL(blob);
     const originalUrl = URL.createObjectURL(file);
 
     const baseName = file.name.replace(/\.[^/.]+$/, "") || "image";
-    const ext = format === "webp" ? "webp" : "jpg";
     const reduction = Math.max(0, Math.round((1 - blob.size / file.size) * 100));
 
     return {

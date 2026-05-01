@@ -320,11 +320,13 @@ main {
 
 .primary,
 .ghost {
-  border-radius: 999px;
-  padding: 0.75rem 1.6rem;
+  border-radius: 12px;
+  padding: 0.7rem 1.25rem;
   font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
   border: none;
+  min-height: 44px;
   transition: all 0.3s ease;
 }
 
@@ -360,10 +362,12 @@ main {
   background: transparent;
   border: 1px solid var(--accent);
   color: var(--accent);
-  border-radius: 999px;
-  padding: 0.75rem 1.6rem;
+  border-radius: 12px;
+  padding: 0.7rem 1.25rem;
   font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
+  min-height: 44px;
   transition: all 0.3s ease;
 }
 
@@ -478,8 +482,9 @@ main {
   align-items: center;
 }
 
-.compress-actions button {
-  min-height: 44px;
+.helper-text {
+  font-size: 0.85rem;
+  color: var(--muted);
 }
 
 .converter-controls,
