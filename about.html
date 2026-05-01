@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <link rel="canonical" href="https://pdfmergeapp.netlify.app/about.html" />
+    <title>About PDF Merge Pro</title>
+    <meta
+      name="description"
+      content="Learn how PDF Merge Pro helps you merge PDFs, convert images, and compress files."
+    />
+    <meta name="author" content="PDF Merge Pro" />
+    <meta name="robots" content="index, follow" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./favicon.ico" />
+
+    <script>
+      (function () {
+        const savedTheme =
+          localStorage.getItem("theme") || localStorage.getItem("pdf-theme");
+        if (savedTheme === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+          localStorage.setItem("theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+          localStorage.setItem("theme", "light");
+        }
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar">
+        <div class="brand">
+          <span class="logo-dot"></span>
+          <span class="brand-text">PDF Merge Pro</span>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">Merge PDF</a>
+          <a href="convert.html">Convert Images</a>
+          <a href="compress.html">Compress Images</a>
+          <a href="about.html" class="active">About</a>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+          <span class="toggle-icon">O</span>
+          <span class="toggle-text">Theme</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="about-page container">
+        <div class="about-hero">
+          <p class="eyebrow">About the suite</p>
+          <h1>PDF Merge Pro – All-in-One File Tool</h1>
+          <p>
+            PDF Merge Pro is not just for merging PDFs, but also for converting and compressing files.
+            Use one clean workspace to merge multiple PDFs, convert images between JPG, PNG, and WEBP,
+            and compress images for faster sharing and storage.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="about-card">
+            <h2>Features</h2>
+            <ul>
+              <li>Merge multiple PDFs into a single file</li>
+              <li>Convert JPG, PNG, and WEBP with instant results</li>
+              <li>Compress images efficiently without extra tools</li>
+              <li>Client-side processing with zero uploads</li>
+            </ul>
+          </article>
+
+          <article class="about-card">
+            <h2>How It Works</h2>
+            <ol>
+              <li>Upload your files</li>
+              <li>Choose the action (merge, convert, or compress)</li>
+              <li>Download the result instantly</li>
+            </ol>
+          </article>
+
+          <article class="about-card">
+            <h2>Privacy & Security</h2>
+            <p>
+              Your files never leave your device. All processing happens directly in your browser,
+              which keeps your documents and images private and secure.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        const themeToggle = document.getElementById("themeToggle");
+        const initTheme = () => {
+          const stored = localStorage.getItem("theme") || localStorage.getItem("pdf-theme");
+          if (stored) {
+            document.documentElement.setAttribute("data-theme", stored);
+            localStorage.setItem("theme", stored);
+          }
+        };
+        const toggleTheme = () => {
+          const current = document.documentElement.getAttribute("data-theme");
+          const next = current === "dark" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", next);
+          localStorage.setItem("theme", next);
+        };
+        if (themeToggle) {
+          themeToggle.addEventListener("click", toggleTheme);
+          initTheme();
+        }
+      })();
+    </script>
+  </body>
+</html>

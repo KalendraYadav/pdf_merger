@@ -2,36 +2,35 @@
 <html lang="en" data-theme="light">
   <head>
     <link rel="canonical" href="https://pdfmergeapp.netlify.app/" />
-    <!-- SEO TITLE -->
-<title>Merge PDF Online Free | Combine PDF Files Instantly - PDF Merge Pro</title>
-
-<!-- META DESCRIPTION -->
-<meta name="description" content="Merge PDF files online for free. Combine multiple PDFs into one instantly. Fast, secure, no signup required. PDF Merge Pro tool.">
-
-<!-- KEYWORDS -->
-<meta name="keywords" content="merge pdf, pdf merger, combine pdf files, merge pdf online free, join pdf, pdf tools, free pdf merger, pdf combine tool">
-
-<!-- AUTHOR -->
-<meta name="author" content="PDF Merge Pro">
-
-<!-- OPEN GRAPH (for sharing) -->
-<meta property="og:title" content="Merge PDF Online Free - PDF Merge Pro">
-<meta property="og:description" content="Combine multiple PDF files instantly with our free online tool.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://pdfmergeapp.netlify.app">
-
-<!-- ROBOTS -->
-<meta name="robots" content="index, follow">
-
-    <meta name="google-site-verification" content="7WRHbYPA7pp6aK4p_g5eyd7ag7VlhLMn7HLe6I0aFnQ" />
+    <title>Merge PDF Online Free | PDF Merge Pro</title>
+    <meta
+      name="description"
+      content="Merge PDFs instantly with a premium client-side experience."
+    />
+    <meta name="author" content="PDF Merge Pro" />
+    <meta name="robots" content="index, follow" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="./favicon.ico" />
-  
+
+    <script>
+      (function () {
+        const savedTheme =
+          localStorage.getItem("theme") || localStorage.getItem("pdf-theme");
+        if (savedTheme === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+          localStorage.setItem("theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+          localStorage.setItem("theme", "light");
+        }
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/styles.css" />
@@ -44,42 +43,38 @@
           <span class="brand-text">PDF Merge Pro</span>
         </div>
         <div class="nav-links">
-          <a href="#home">Home</a>
-          <a href="#features">Features</a>
-          <a href="#about">About</a>
+          <a href="index.html" class="active">Merge PDF</a>
+          <a href="convert.html">Convert Images</a>
+          <a href="compress.html">Compress Images</a>
+          <a href="about.html">About</a>
         </div>
         <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
-          <span class="toggle-icon">◐</span>
+          <span class="toggle-icon">O</span>
           <span class="toggle-text">Theme</span>
         </button>
       </nav>
     </header>
 
     <main>
-      <section id="home" class="hero">
-        <div class="hero-content">
-          <p class="eyebrow">Fast. Clean. Secure.</p>
-          <h1>PDF Merge Pro</h1>
-          <h2>Merge PDFs with zero friction.</h2>
-          <p class="hero-subtitle">
-            Drag, drop, reorder, and export a polished PDF in seconds. All in your browser.
+      <section class="hero container">
+        <div>
+          <p class="eyebrow">Premium file tools</p>
+          <h1>Merge, Convert & Compress Files Effortlessly</h1>
+          <p>
+            Keep everything local, fast, and private. Drag files in, pick an action, and download
+            in seconds.
           </p>
           <div class="hero-actions">
-            <button class="primary" id="pickFiles" type="button">Select PDFs</button>
-            <button class="ghost" id="clearAll" type="button">Clear list</button>
-          </div>
-          <div class="hero-meta">
-            <span>Client-side only</span>
-            <span>Up to 100 MB per file</span>
-            <span>Drag to reorder</span>
+            <button class="primary" type="button" data-pick-files>Get Started</button>
+            <a class="ghost" href="about.html">Learn more</a>
           </div>
         </div>
-        <div class="hero-card">
+        <div class="hero-card glass">
           <div class="drop-zone" id="dropZone">
             <div class="drop-content">
-              <div class="drop-icon">⇣</div>
+              <div class="drop-icon">v</div>
               <p>Drop PDFs here</p>
-              <span>or use the button above</span>
+              <span>or use the button below</span>
             </div>
             <input id="fileInput" type="file" accept="application/pdf" multiple />
           </div>
@@ -87,96 +82,41 @@
         </div>
       </section>
 
-      <section class="workspace">
-        <div class="workspace-header">
-          <h2>Your merge queue</h2>
-          <div class="workspace-actions">
-            <label class="filename-label" for="outputName">Output name</label>
-            <input id="outputName" type="text" placeholder="merged.pdf" />
-            <button class="primary" id="mergeBtn" type="button">Merge PDFs</button>
-          </div>
-        </div>
-
-        <div class="progress" id="progressBar" aria-hidden="true">
-          <div class="progress-track">
-            <div class="progress-fill" id="progressFill"></div>
-          </div>
-          <span class="progress-text" id="progressText">0%</span>
-        </div>
-
-        <ul class="file-list" id="fileList"></ul>
-
-        <div class="download-panel" id="downloadPanel" hidden>
+      <section class="tool-shell container glass">
+        <div class="tool-grid">
           <div>
-            <h3>Ready to download</h3>
-            <p>Your merged PDF is prepared.</p>
+            <div class="merge-actions">
+              <button class="primary" type="button" data-pick-files>Select PDFs</button>
+              <div>
+                <label class="filename-label" for="outputName">Output name</label>
+                <input id="outputName" type="text" placeholder="merged.pdf" />
+              </div>
+              <button class="primary" id="mergeBtn" type="button">Merge PDFs</button>
+              <button class="ghost" id="clearAll" type="button">Clear list</button>
+            </div>
+
+            <div class="progress" id="progressBar" aria-hidden="true">
+              <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+              <span class="progress-text" id="progressText">0%</span>
+            </div>
           </div>
-          <a id="downloadLink" class="primary" href="#" download="merged.pdf">Download</a>
-        </div>
-      </section>
 
-      <section id="features" class="features">
-        <div class="feature-card">
-          <h3>Smart ordering</h3>
-          <p>Drag cards to reorder and the merge keeps pace instantly.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Clean exports</h3>
-          <p>Reliable PDF integrity with page-accurate merges.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Zero uploads</h3>
-          <p>Your files stay on your device. Fast and private.</p>
-        </div>
-      </section>
+          <div class="merge-list">
+            <ul class="file-list" id="fileList"></ul>
 
-      <section id="about" class="about">
-        <div>
-          <h2>Built for flow</h2>
-          <p>
-            PDF Merge Pro keeps everything responsive, with lightweight drag-and-drop and
-            a polished, SaaS-like interface that feels native on any screen.
-          </p>
-        </div>
-        <div class="about-stat">
-          <h4>Local processing</h4>
-          <span>No servers. No delays.</span>
+            <div class="download-panel" id="downloadPanel" hidden>
+              <div>
+                <h3>Ready to download</h3>
+                <p>Your merged PDF is prepared.</p>
+              </div>
+              <a id="downloadLink" class="primary" href="#" download="merged.pdf">Download</a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
-
-    <section id="seo-content" class="seo-section">
-      <div class="seo-container">
-        <p class="seo-pill">Merge PDFs in seconds</p>
-        <h2>Merge PDF Files Online</h2>
-
-        <p>
-          PDF Merge Pro helps you combine documents securely in your browser. Merge PDF files online with
-          zero uploads, fast processing, and a clean workflow that keeps your files private.
-        </p>
-
-        <h3>How to Merge PDFs</h3>
-        <ol>
-          <li>Upload your PDF files using the drop zone or Select PDFs button.</li>
-          <li>Drag to arrange the order exactly how you want it.</li>
-          <li>Click merge and download your new file instantly.</li>
-        </ol>
-
-        <h3>Why Use This Tool</h3>
-        <p>
-          You get a fast, reliable merge without installing software. Everything happens locally, so
-          your documents never leave your device.
-        </p>
-
-        <h3>Features</h3>
-        <ul>
-          <li>Unlimited PDF merging in one session</li>
-          <li>Drag-and-drop ordering with live updates</li>
-          <li>Secure, client-side processing</li>
-          <li>Works on desktop and mobile browsers</li>
-        </ul>
-      </div>
-    </section>
 
     <div class="loading" id="loadingOverlay" hidden>
       <div class="spinner"></div>
@@ -184,7 +124,6 @@
     </div>
 
     <script defer src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-    <script src="./js/script.js" defer></script>
-
+    <script src="./js/merge.js" defer></script>
   </body>
 </html>

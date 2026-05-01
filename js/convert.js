@@ -1,0 +1,268 @@
+(() => {
+  const imageInput = document.getElementById("imageInput");
+  if (!imageInput) return;
+
+  const imageDropZone = document.getElementById("imageDropZone");
+  const imageFormat = document.getElementById("imageFormat");
+  const selectBtn = document.getElementById("selectImagesBtn");
+  const convertBtn = document.getElementById("convertImagesBtn");
+  const clearBtn = document.getElementById("clearImagesBtn");
+  const statusEl = document.getElementById("imageStatus");
+  const resultsList = document.getElementById("imageResults");
+  const countEl = document.getElementById("imageCount");
+  const loadingEl = document.getElementById("imageLoading");
+  const themeToggle = document.getElementById("themeToggle");
+
+  const state = {
+    files: [],
+    results: [],
+  };
+
+  const formatBytes = (bytes) => {
+    if (!bytes) return "0 B";
+    const k = 1024;
+    const sizes = ["B", "KB", "MB", "GB"];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return `${(bytes / Math.pow(k, i)).toFixed(1)} ${sizes[i]}`;
+  };
+
+  const formatMap = {
+    jpg: { mime: "image/jpeg", ext: "jpg", quality: 0.92 },
+    png: { mime: "image/png", ext: "png" },
+    webp: { mime: "image/webp", ext: "webp", quality: 0.92 },
+  };
+
+  const setStatus = (message, tone = "") => {
+    statusEl.textContent = message;
+    statusEl.className = `converter-status ${tone}`.trim();
+  };
+
+  const setCount = () => {
+    const total = state.results.length;
+    countEl.textContent = `${total} file${total === 1 ? "" : "s"}`;
+  };
+
+  const revokeResults = () => {
+    state.results.forEach((entry) => URL.revokeObjectURL(entry.url));
+    state.results = [];
+  };
+
+  const renderResults = () => {
+    resultsList.innerHTML = "";
+    if (!state.results.length) {
+      const empty = document.createElement("li");
+      empty.className = "results-empty";
+      empty.textContent = "Converted files will appear here.";
+      resultsList.appendChild(empty);
+      setCount();
+      return;
+    }
+
+    state.results.forEach((entry) => {
+      const item = document.createElement("li");
+      item.className = "result-card";
+      item.innerHTML = `
+        <div>
+          <h4>${entry.name}</h4>
+          <div class="result-meta">From ${entry.source} • ${formatBytes(entry.size)}</div>
+        </div>
+        <a class="primary" href="${entry.url}" download="${entry.name}">Download</a>
+      `;
+      resultsList.appendChild(item);
+    });
+    setCount();
+  };
+
+  const loadImage = (file) => {
+    if ("createImageBitmap" in window) {
+      return createImageBitmap(file);
+    }
+
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = () => {
+        URL.revokeObjectURL(url);
+        resolve(img);
+      };
+      img.onerror = () => {
+        URL.revokeObjectURL(url);
+        reject(new Error(`Unable to read ${file.name}.`));
+      };
+      img.src = url;
+    });
+  };
+
+  const canvasToBlob = (canvas, mime, quality) =>
+    new Promise((resolve, reject) => {
+      canvas.toBlob(
+        (blob) => {
+          if (!blob) {
+            reject(new Error("Conversion failed."));
+            return;
+          }
+          resolve(blob);
+        },
+        mime,
+        quality
+      );
+    });
+
+  const convertImage = async (file, format) => {
+    const config = formatMap[format] || formatMap.png;
+    const image = await loadImage(file);
+    const width = image.width || image.naturalWidth;
+    const height = image.height || image.naturalHeight;
+
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext("2d");
+
+    if (format === "jpg") {
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    ctx.drawImage(image, 0, 0, width, height);
+    if (image.close) image.close();
+
+    const blob = await canvasToBlob(canvas, config.mime, config.quality);
+    const url = URL.createObjectURL(blob);
+    const baseName = file.name.replace(/\.[^/.]+$/, "") || "image";
+
+    return {
+      name: `${baseName}.${config.ext}`,
+      source: file.name,
+      size: blob.size,
+      url,
+    };
+  };
+
+  const validateFiles = (files) => {
+    const valid = [];
+    const errors = [];
+
+    Array.from(files).forEach((file) => {
+      const isImage =
+        file.type.startsWith("image/") ||
+        /(\.jpe?g|\.png|\.webp)$/i.test(file.name);
+      if (!isImage) {
+        errors.push(`${file.name} is not a supported image.`);
+        return;
+      }
+      valid.push(file);
+    });
+
+    return { valid, errors };
+  };
+
+  const addFiles = (files) => {
+    const { valid, errors } = validateFiles(files);
+    if (errors.length) {
+      setStatus(errors[0], "error");
+    }
+    if (!valid.length) return;
+
+    state.files.push(...valid);
+    setStatus(`${valid.length} image(s) ready.`, "success");
+  };
+
+  const clearAll = () => {
+    state.files = [];
+    revokeResults();
+    renderResults();
+    setStatus("Selection cleared.", "info");
+  };
+
+  const setLoading = (isLoading) => {
+    loadingEl.hidden = !isLoading;
+    convertBtn.disabled = isLoading;
+    convertBtn.setAttribute("aria-busy", isLoading ? "true" : "false");
+  };
+
+  const runConversion = async () => {
+    if (!state.files.length) {
+      setStatus("Add at least one image to convert.", "error");
+      return;
+    }
+
+    setStatus("Converting images...", "info");
+    setLoading(true);
+    revokeResults();
+    renderResults();
+
+    try {
+      const format = imageFormat.value;
+      const converted = [];
+
+      for (let i = 0; i < state.files.length; i += 1) {
+        const file = state.files[i];
+        const result = await convertImage(file, format);
+        converted.push(result);
+        setStatus(`Converted ${i + 1} of ${state.files.length}.`, "info");
+      }
+
+      state.results = converted;
+      renderResults();
+      setStatus("Conversion complete.", "success");
+    } catch (error) {
+      setStatus(error.message || "Unable to convert images.", "error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const initTheme = () => {
+    const stored = localStorage.getItem("theme") || localStorage.getItem("pdf-theme");
+    if (stored) {
+      document.documentElement.setAttribute("data-theme", stored);
+      localStorage.setItem("theme", stored);
+    }
+  };
+
+  const toggleTheme = () => {
+    const current = document.documentElement.getAttribute("data-theme");
+    const next = current === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+  };
+
+  convertBtn.addEventListener("click", runConversion);
+  clearBtn.addEventListener("click", clearAll);
+  selectBtn?.addEventListener("click", () => imageInput.click());
+
+  imageInput.addEventListener("change", (event) => {
+    if (event.target.files?.length) {
+      addFiles(event.target.files);
+    }
+    event.target.value = "";
+  });
+
+  ["dragenter", "dragover"].forEach((eventName) => {
+    imageDropZone.addEventListener(eventName, (event) => {
+      event.preventDefault();
+      imageDropZone.classList.add("active");
+    });
+  });
+
+  ["dragleave", "drop"].forEach((eventName) => {
+    imageDropZone.addEventListener(eventName, (event) => {
+      event.preventDefault();
+      imageDropZone.classList.remove("active");
+    });
+  });
+
+  imageDropZone.addEventListener("drop", (event) => {
+    if (event.dataTransfer?.files?.length) {
+      addFiles(event.dataTransfer.files);
+    }
+  });
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", toggleTheme);
+    initTheme();
+  }
+
+  renderResults();
+})();

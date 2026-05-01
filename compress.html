@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <link rel="canonical" href="https://pdfmergeapp.netlify.app/compress.html" />
+    <title>Compress Images Online | PDF Merge Pro</title>
+    <meta
+      name="description"
+      content="Compress images with quality control, resizing, and format optimization."
+    />
+    <meta name="author" content="PDF Merge Pro" />
+    <meta name="robots" content="index, follow" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./favicon.ico" />
+
+    <script>
+      (function () {
+        const savedTheme =
+          localStorage.getItem("theme") || localStorage.getItem("pdf-theme");
+        if (savedTheme === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+          localStorage.setItem("theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+          localStorage.setItem("theme", "light");
+        }
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar">
+        <div class="brand">
+          <span class="logo-dot"></span>
+          <span class="brand-text">PDF Merge Pro</span>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">Merge PDF</a>
+          <a href="convert.html">Convert Images</a>
+          <a href="compress.html" class="active">Compress Images</a>
+          <a href="about.html">About</a>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+          <span class="toggle-icon">O</span>
+          <span class="toggle-text">Theme</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero container">
+        <div>
+          <p class="eyebrow">Image optimization</p>
+          <h1>Compress Images Without Sacrificing Quality</h1>
+          <p>Fine-tune size, dimensions, and format for the perfect output.</p>
+        </div>
+        <div class="hero-card glass">
+          <div class="compress-drop" id="compressDropZone">
+            <div class="compress-drop-content">
+              <div class="compress-drop-icon">[]</div>
+              <p>Drag and drop images here</p>
+              <span>or use the button below</span>
+            </div>
+            <input id="compressInput" type="file" accept="image/jpeg,image/png,image/webp" multiple />
+          </div>
+          <div class="compress-status" id="compressStatus" role="status" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="tool-shell container glass">
+        <div class="tool-grid">
+          <div>
+            <div class="compress-controls">
+              <div class="control-row">
+                <label for="compressQuality">Compression level</label>
+                <div class="slider-row">
+                  <input id="compressQuality" type="range" min="0" max="100" value="80" />
+                  <span id="compressQualityValue">80%</span>
+                </div>
+              </div>
+
+              <div class="control-row">
+                <label>Resize (px)</label>
+                <div class="resize-row">
+                  <input id="compressWidth" type="number" min="1" placeholder="Width" />
+                  <input id="compressHeight" type="number" min="1" placeholder="Height" />
+                </div>
+              </div>
+
+              <div class="control-row">
+                <label for="compressFormat">Format optimization</label>
+                <select id="compressFormat">
+                  <option value="jpg">JPG (smaller size)</option>
+                  <option value="webp">WEBP (best compression)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="compress-actions">
+              <button class="primary" id="selectCompressBtn" type="button">Select Images</button>
+              <button class="primary" id="compressBtn" type="button">Compress Now</button>
+              <button class="ghost" id="clearCompressBtn" type="button">Clear</button>
+            </div>
+
+            <div class="compress-progress" id="compressProgress" aria-hidden="true">
+              <div class="compress-track">
+                <div class="compress-fill" id="compressFill"></div>
+              </div>
+              <span class="compress-text" id="compressText">0%</span>
+            </div>
+          </div>
+
+          <div class="compress-results">
+            <div class="compress-results-header">
+              <h3>Optimized files</h3>
+              <span id="compressCount">0 files</span>
+            </div>
+            <ul class="compress-results-list" id="compressResults"></ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="compress-loading" id="compressLoading" hidden>
+        <div class="spinner"></div>
+        <p>Compressing images...</p>
+      </div>
+    </main>
+
+    <script src="./js/compress.js" defer></script>
+  </body>
+</html>
