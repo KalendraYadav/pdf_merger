@@ -191,6 +191,7 @@ const progressFill = document.getElementById("progressFill");
 const progressText = document.getElementById("progressText");
 const loadingOverlay = document.getElementById("loadingOverlay");
 const themeToggle = document.getElementById("themeToggle");
+const toggleIcon = themeToggle?.querySelector(".toggle-icon");
 
 const MAX_FILE_BYTES = 100 * 1024 * 1024;
 const MAX_TOTAL_BYTES = 400 * 1024 * 1024;
@@ -342,6 +343,7 @@ const initTheme = () => {
   if (stored) {
     document.documentElement.setAttribute("data-theme", stored);
   }
+  syncThemeIcon(stored || document.documentElement.getAttribute("data-theme") || "light");
 };
 
 const toggleTheme = () => {
@@ -349,6 +351,16 @@ const toggleTheme = () => {
   const next = current === "dark" ? "light" : "dark";
   document.documentElement.setAttribute("data-theme", next);
   localStorage.setItem("pdf-theme", next);
+  syncThemeIcon(next);
+};
+
+const syncThemeIcon = (theme) => {
+  if (!toggleIcon) return;
+  const sunIcon =
+    '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="M4.93 4.93l1.41 1.41"></path><path d="M17.66 17.66l1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="M4.93 19.07l1.41-1.41"></path><path d="M17.66 6.34l1.41-1.41"></path></svg>';
+  const moonIcon =
+    '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path></svg>';
+  toggleIcon.innerHTML = theme === "dark" ? sunIcon : moonIcon;
 };
 
 themeToggle.addEventListener("click", toggleTheme);
