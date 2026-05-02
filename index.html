@@ -1,152 +1,150 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-  <head>
-    <link rel="canonical" href="https://mergepdfpro.netlify.app" />
-    <title>Merge PDF Online Free | PDF Merge Pro</title>
-    <meta
-      name="description"
-      content="Merge PDFs instantly with a premium client-side experience."
-    />
-    <meta name="author" content="PDF Merge Pro" />
-    <meta name="robots" content="index, follow" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="./favicon.ico" />
+    <head>
+        <link rel="canonical" href="https://youseepdf.netlify.app" />
+        <title>Merge PDF Online Free | YouSeePDF</title>
+        <meta
+            name="description"
+            content="Merge PDFs instantly with a premium client-side experience."
+        />
+        <meta name="author" content="YouSeePDF" />
+        <meta name="robots" content="index, follow" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="./favicon.ico" />
 
-    <script>
-      (function () {
-        const savedTheme =
-          localStorage.getItem("theme") || localStorage.getItem("pdf-theme");
-        if (savedTheme === "dark") {
-          document.documentElement.setAttribute("data-theme", "dark");
-          localStorage.setItem("theme", "dark");
-        } else {
-          document.documentElement.setAttribute("data-theme", "light");
-          localStorage.setItem("theme", "light");
-        }
-      })();
-    </script>
+        <script>
+            (function () {
+                const savedTheme =
+                    localStorage.getItem("theme") || localStorage.getItem("pdf-theme");
+                if (savedTheme === "dark") {
+                    document.documentElement.setAttribute("data-theme", "dark");
+                    localStorage.setItem("theme", "dark");
+                } else {
+                    document.documentElement.setAttribute("data-theme", "light");
+                    localStorage.setItem("theme", "light");
+                }
+            })();
+        </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles/styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <nav class="navbar">
-        <div class="brand">
-          <span class="logo-dot"></span>
-          <span class="brand-text">PDF Merge Pro</span>
-        </div>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./styles/styles.css" />
+    </head>
+    <body>
+        <header class="site-header">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo-text">
+                        YOU<span class="logo-eye"></span>PDF
+                    </span>
+                </div>
         
-        <!-- Scalable SaaS Navigation -->
-        <div class="nav-links">
-          <a href="/index.html" class="nav-item active">Merge PDF</a>
-          <a href="/split.html" class="nav-item">Split PDF</a>
+                <!-- Scalable SaaS Navigation -->
+                <div class="nav-links">
+                    <a href="/index.html" class="nav-item active">Merge PDF</a>
+                    <a href="/split.html" class="nav-item">Split PDF</a>
           
-          <!-- Convert Dropdown Tool Registry -->
-          <div class="nav-dropdown" aria-haspopup="true" aria-expanded="false" tabindex="0">
-            <span class="nav-item dropdown-toggle">Convert Options ▾</span>
-            <div class="dropdown-menu">
-              <div class="dropdown-group">
-                <span class="dropdown-header">Convert To PDF</span>
-                <a href="/convert.html?type=jpg-to-pdf">JPG to PDF</a>
-                <a href="/convert.html?type=png-to-pdf">PNG to PDF</a>
-              </div>
-              <div class="dropdown-group">
-                <span class="dropdown-header">Convert From PDF</span>
-                <a href="/convert.html?type=pdf-to-jpg">PDF to JPG</a>
-                <a href="/convert.html?type=pdf-to-png">PDF to PNG</a>
-              </div>
-            </div>
-          </div>
+                    <!-- Convert Dropdown Tool Registry -->
+                    <div class="nav-dropdown" aria-haspopup="true" aria-expanded="false" tabindex="0">
+                        <span class="nav-item dropdown-toggle">CONVERT OPTIONS ▾</span>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-group">
+                                <span class="dropdown-header">Convert To PDF</span>
+                                <a href="/convert.html?type=jpg-to-pdf">JPG to PDF</a>
+                                <a href="/convert.html?type=png-to-pdf">PNG to PDF</a>
+                            </div>
+                            <div class="dropdown-group">
+                                <span class="dropdown-header">Convert From PDF</span>
+                                <a href="/convert.html?type=pdf-to-jpg">PDF to JPG</a>
+                                <a href="/convert.html?type=pdf-to-png">PDF to PNG</a>
+                            </div>
+                        </div>
+                    </div>
           
-          <!-- Future-ready expansion slot -->
-          <a href="/compress.html" class="nav-item">Compress</a>
-          <a href="/about.html" class="nav-item">Tools Info</a>
+                    <!-- Future-ready expansion slot -->
+                    <a href="/compress.html" class="nav-item">Compress</a>
+                    <a href="/about.html" class="nav-item">Tools Info</a>
+                </div>
+
+                <button id="themeToggle" class="theme-icon" type="button" aria-label="Toggle theme"></button>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero container">
+                <div class="hero-copy">
+                    <p class="eyebrow">Premium file tools</p>
+                    <h1>Merge, Convert & Compress Files Effortlessly</h1>
+                    <p>
+                        Keep everything local, fast, and private. Drag files in, pick an action, and download
+                        in seconds.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="ghost" href="https://youseepdf.netlify.app/about.html">Learn more</a>
+                    </div>
+                </div>
+                <div class="hero-card glass">
+                    <div class="drop-zone" id="dropZone">
+                        <div class="drop-content">
+                            <div class="drop-icon">v</div>
+                            <p>Drop PDFs here</p>
+                            <span>or use the button below</span>
+                        </div>
+                        <input id="fileInput" type="file" accept="application/pdf" multiple />
+                    </div>
+                    <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+                </div>
+            </section>
+
+            <section class="tool-shell container glass">
+                <div class="tool-grid">
+                    <div class="tool-card">
+                        <div class="merge-actions">
+                            <button class="secondary select-pdf-btn" type="button" data-pick-files>
+                                Select PDFs
+                            </button>
+                            <div>
+                                <label class="filename-label" for="outputName">Output name</label>
+                                <input id="outputName" type="text" placeholder="merged.pdf" />
+                            </div>
+                            <button class="primary primary-gradient" id="mergeBtn" type="button">Merge PDFs</button>
+                            <button class="ghost" id="clearAll" type="button">Clear list</button>
+                        </div>
+
+                        <div class="progress" id="progressBar" aria-hidden="true">
+                            <div class="progress-track">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <span class="progress-text" id="progressText">0%</span>
+                        </div>
+                    </div>
+
+                    <div class="merge-list">
+                        <ul class="file-list" id="fileList"></ul>
+
+                        <div class="download-panel" id="downloadPanel" hidden>
+                            <div>
+                                <h3>Ready to download</h3>
+                                <p>Your merged PDF is prepared.</p>
+                            </div>
+                            <a id="downloadLink" class="primary" href="#" download="merged.pdf">Download</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="loading" id="loadingOverlay" hidden>
+            <div class="spinner"></div>
+            <p>Merging PDFs...</p>
         </div>
 
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
-          <span class="toggle-icon" aria-hidden="true"></span>
-          <span class="toggle-text">Theme</span>
-        </button>
-      </nav>
-    </header>
-
-    <main>
-      <section class="hero container">
-        <div class="hero-copy">
-          <p class="eyebrow">Premium file tools</p>
-          <h1>Merge, Convert & Compress Files Effortlessly</h1>
-          <p>
-            Keep everything local, fast, and private. Drag files in, pick an action, and download
-            in seconds.
-          </p>
-          <div class="hero-actions">
-            <a class="ghost" href="https://mergepdfpro.netlify.app/about.html">Learn more</a>
-          </div>
-        </div>
-        <div class="hero-card glass">
-          <div class="drop-zone" id="dropZone">
-            <div class="drop-content">
-              <div class="drop-icon">v</div>
-              <p>Drop PDFs here</p>
-              <span>or use the button below</span>
-            </div>
-            <input id="fileInput" type="file" accept="application/pdf" multiple />
-          </div>
-          <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
-        </div>
-      </section>
-
-      <section class="tool-shell container glass">
-        <div class="tool-grid">
-          <div class="tool-card">
-            <div class="merge-actions">
-              <button class="secondary select-pdf-btn" type="button" data-pick-files>
-                Select PDFs
-              </button>
-              <div>
-                <label class="filename-label" for="outputName">Output name</label>
-                <input id="outputName" type="text" placeholder="merged.pdf" />
-              </div>
-              <button class="primary primary-gradient" id="mergeBtn" type="button">Merge PDFs</button>
-              <button class="ghost" id="clearAll" type="button">Clear list</button>
-            </div>
-
-            <div class="progress" id="progressBar" aria-hidden="true">
-              <div class="progress-track">
-                <div class="progress-fill" id="progressFill"></div>
-              </div>
-              <span class="progress-text" id="progressText">0%</span>
-            </div>
-          </div>
-
-          <div class="merge-list">
-            <ul class="file-list" id="fileList"></ul>
-
-            <div class="download-panel" id="downloadPanel" hidden>
-              <div>
-                <h3>Ready to download</h3>
-                <p>Your merged PDF is prepared.</p>
-              </div>
-              <a id="downloadLink" class="primary" href="#" download="merged.pdf">Download</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <div class="loading" id="loadingOverlay" hidden>
-      <div class="spinner"></div>
-      <p>Merging PDFs...</p>
-    </div>
-
-    <script defer src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-    <script src="./js/merge.js" defer></script>
-  </body>
+        <script defer src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+        <script src="./js/merge.js" defer></script>
+    </body>
 </html>

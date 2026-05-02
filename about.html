@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
   <head>
-    <link rel="canonical" href="https://mergepdfpro.netlify.app/about.html" />
-    <title>About PDF Merge Pro</title>
+    <link rel="canonical" href="https://youseepdf.netlify.app/about.html" />
+    <title>About YouSeePDF</title>
     <meta
       name="description"
-      content="Learn how PDF Merge Pro helps you merge PDFs, convert images, and compress files."
+      content="Learn how YouSeePDF helps you merge PDFs, convert images, and compress files."
     />
-    <meta name="author" content="PDF Merge Pro" />
+    <meta name="author" content="YouSeePDF" />
     <meta name="robots" content="index, follow" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -38,9 +38,10 @@
   <body>
     <header class="site-header">
       <nav class="navbar">
-        <div class="brand">
-          <span class="logo-dot"></span>
-          <span class="brand-text">PDF Merge Pro</span>
+        <div class="logo">
+          <span class="logo-text">
+            YOU<span class="logo-eye"></span>PDF
+          </span>
         </div>
         
         <!-- Scalable SaaS Navigation -->
@@ -50,7 +51,7 @@
           
           <!-- Convert Dropdown Tool Registry -->
           <div class="nav-dropdown" aria-haspopup="true" aria-expanded="false" tabindex="0">
-            <span class="nav-item dropdown-toggle">Convert Options ▾</span>
+            <span class="nav-item dropdown-toggle">CONVERT OPTIONS ▾</span>
             <div class="dropdown-menu">
               <div class="dropdown-group">
                 <span class="dropdown-header">Convert To PDF</span>
@@ -70,16 +71,7 @@
           <a href="/about.html" class="nav-item active">Tools Info</a>
         </div>
 
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
-          <span class="toggle-icon" aria-hidden="true"></span>
-          <span class="toggle-text">Theme</span>
-        </button>
-      </nav>
-    </header>
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
-          <span class="toggle-icon" aria-hidden="true"></span>
-          <span class="toggle-text">Theme</span>
-        </button>
+        <button id="themeToggle" class="theme-icon" type="button" aria-label="Toggle theme"></button>
       </nav>
     </header>
 
@@ -87,10 +79,10 @@
       <section class="about-page container">
         <div class="about-hero about-hero-card">
           <p class="eyebrow">About the suite</p>
-          <h1>PDF Merge Pro — All-in-One File Toolkit</h1>
+          <h1>YouSeePDF — All-in-One File Toolkit</h1>
           <p>
             Merge PDFs, convert images, and compress files — all in your browser with zero uploads.
-            PDF Merge Pro keeps everything fast, private, and easy to share.
+            YouSeePDF keeps everything fast, private, and easy to share.
           </p>
         </div>
 
@@ -125,7 +117,7 @@
 
         <section class="about-section">
           <div class="about-section-header">
-            <h2>Why Choose PDF Merge Pro?</h2>
+            <h2>Why Choose YouSeePDF?</h2>
             <p>Built for speed, privacy, and effortless file management.</p>
           </div>
           <div class="trust-grid">
@@ -140,7 +132,7 @@
           <div class="about-section-header">
             <h2>What’s Coming Next?</h2>
             <p>
-              We are continuously improving PDF Merge Pro with features like PDF to image conversion,
+              We are continuously improving YouSeePDF with features like PDF to image conversion,
               advanced compression tools, batch processing, and optional cloud integrations.
             </p>
           </div>
@@ -151,14 +143,9 @@
     <script>
       (function () {
         const themeToggle = document.getElementById("themeToggle");
-        const toggleIcon = themeToggle?.querySelector(".toggle-icon");
         const syncThemeIcon = (theme) => {
-          if (!toggleIcon) return;
-          const sunIcon =
-            '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="M4.93 4.93l1.41 1.41"></path><path d="M17.66 17.66l1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="M4.93 19.07l1.41-1.41"></path><path d="M17.66 6.34l1.41-1.41"></path></svg>';
-          const moonIcon =
-            '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path></svg>';
-          toggleIcon.innerHTML = theme === "dark" ? sunIcon : moonIcon;
+          if (!themeToggle) return;
+          themeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
         };
         const initTheme = () => {
           const stored = localStorage.getItem("theme") || localStorage.getItem("pdf-theme");
