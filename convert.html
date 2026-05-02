@@ -42,12 +42,40 @@
           <span class="logo-dot"></span>
           <span class="brand-text">PDF Merge Pro</span>
         </div>
+        
+        <!-- Scalable SaaS Navigation -->
         <div class="nav-links">
-          <a href="https://mergepdfpro.netlify.app/index.html">Merge PDF</a>
-          <a href="https://mergepdfpro.netlify.app/convert.html" class="active">Convert Images</a>
-          <a href="https://mergepdfpro.netlify.app/compress.html">Compress Images</a>
-          <a href="https://mergepdfpro.netlify.app/about.html">About</a>
+          <a href="/index.html" class="nav-item">Merge PDF</a>
+          <a href="/split.html" class="nav-item">Split PDF</a>
+          
+          <!-- Convert Dropdown Tool Registry -->
+          <div class="nav-dropdown" aria-haspopup="true" aria-expanded="false" tabindex="0">
+            <span class="nav-item dropdown-toggle active">Convert Options ▾</span>
+            <div class="dropdown-menu">
+              <div class="dropdown-group">
+                <span class="dropdown-header">Convert To PDF</span>
+                <a href="/convert.html?type=jpg-to-pdf">JPG to PDF</a>
+                <a href="/convert.html?type=png-to-pdf">PNG to PDF</a>
+              </div>
+              <div class="dropdown-group">
+                <span class="dropdown-header">Convert From PDF</span>
+                <a href="/convert.html?type=pdf-to-jpg">PDF to JPG</a>
+                <a href="/convert.html?type=pdf-to-png">PDF to PNG</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Future-ready expansion slot -->
+          <a href="/compress.html" class="nav-item">Compress</a>
+          <a href="/about.html" class="nav-item">Tools Info</a>
         </div>
+
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+          <span class="toggle-icon" aria-hidden="true"></span>
+          <span class="toggle-text">Theme</span>
+        </button>
+      </nav>
+    </header>
         <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
           <span class="toggle-icon" aria-hidden="true"></span>
           <span class="toggle-text">Theme</span>

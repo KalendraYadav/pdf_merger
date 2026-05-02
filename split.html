@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <title>Split PDF | PDF Merge Pro</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar">
+        <div class="brand">
+          <span class="logo-dot"></span>
+          <span class="brand-text">PDF Merge Pro</span>
+        </div>
+        
+        <!-- Scalable SaaS Navigation -->
+        <div class="nav-links">
+          <a href="/index.html" class="nav-item">Merge PDF</a>
+          <a href="/split.html" class="nav-item active">Split PDF</a>
+          
+          <!-- Convert Dropdown Tool Registry -->
+          <div class="nav-dropdown" aria-haspopup="true" aria-expanded="false" tabindex="0">
+            <span class="nav-item dropdown-toggle">Convert Options ▾</span>
+            <div class="dropdown-menu">
+              <div class="dropdown-group">
+                <span class="dropdown-header">Convert To PDF</span>
+                <a href="/convert.html?type=jpg-to-pdf">JPG to PDF</a>
+                <a href="/convert.html?type=png-to-pdf">PNG to PDF</a>
+              </div>
+              <div class="dropdown-group">
+                <span class="dropdown-header">Convert From PDF</span>
+                <a href="/convert.html?type=pdf-to-jpg">PDF to JPG</a>
+                <a href="/convert.html?type=pdf-to-png">PDF to PNG</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Future-ready expansion slot -->
+          <a href="/compress.html" class="nav-item">Compress</a>
+          <a href="/about.html" class="nav-item">Tools Info</a>
+        </div>
+
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+          <span class="toggle-icon" aria-hidden="true"></span>
+          <span class="toggle-text">Theme</span>
+        </button>
+      </nav>
+    </header>
+    
+    <main>
+      <section class="hero container">
+        <div class="hero-copy">
+          <p class="eyebrow">Premium file tools</p>
+          <h1>Split PDF Files Seamlessly</h1>
+          <p>Separate one page or an entire set for easy conversion into independent PDF files.</p>
+        </div>
+        
+        <div class="hero-card glass">
+          <div class="drop-zone" id="splitDropZone">
+            <div class="drop-content">
+              <div class="drop-icon">v</div>
+              <p>Drop a PDF here</p>
+              <span>or use the button below</span>
+            </div>
+            <input id="splitFileInput" type="file" accept="application/pdf" />
+          </div>
+          <div class="status" id="splitStatusMessage" role="status" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="tool-shell container glass">
+        <div class="tool-grid">
+          <div class="tool-card">
+            <h3>Split Options</h3>
+            
+            <div class="split-options-container">
+              <div class="split-option-card">
+                <label>
+                  <div><input type="radio" name="splitType" value="fixed" checked /> Fixed Ranges</div>
+                  <input type="number" placeholder="e.g. Split every 1 page" min="1" id="fixedRangeInput" />
+                </label>
+              </div>
+              <div class="split-option-card">
+                <label>
+                  <div><input type="radio" name="splitType" value="custom" /> Custom Range</div>
+                  <input type="text" placeholder="e.g. 1-5, 8-10" id="customRangeInput" />
+                </label>
+              </div>
+              <div class="split-option-card">
+                <label>
+                  <div><input type="radio" name="splitType" value="equal" /> Equal Parts</div>
+                  <input type="number" placeholder="Number of chunks" min="2" id="equalPartsInput" />
+                </label>
+              </div>
+            </div>
+
+            <div class="merge-actions">
+              <button class="primary primary-gradient" id="splitBtn" type="button">Split PDF</button>
+              <button class="ghost" id="clearSplit" type="button">Reset</button>
+            </div>
+
+            <!-- Dynamic Results Target -->
+            <ul class="file-list" id="splitResults" aria-live="polite" style="margin-top: 1rem;">
+               <!-- Results injected by JS: Part1.pdf | Download -->
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="./js/script.js"></script>
+    <script>
+       // Placeholder script architecture to stub immediate testing without backend/heavy logical refactor
+       document.getElementById('splitBtn').addEventListener('click', (e) => {
+         e.preventDefault();
+         const results = document.getElementById('splitResults');
+         results.innerHTML = `
+           <li class="file-item">
+             <span class="file-name">Part 1.pdf</span>
+             <button class="ghost" onclick="alert('Download Triggered')">Download</button>
+           </li>
+           <li class="file-item">
+             <span class="file-name">Part 2.pdf</span>
+             <button class="ghost" onclick="alert('Download Triggered')">Download</button>
+           </li>`;
+       });
+    </script>
+  </body>
+</html>

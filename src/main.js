@@ -177,3 +177,42 @@ const toggleTheme = () => {
 
 themeToggle.addEventListener("click", toggleTheme);
 initTheme();
+
+// SaaS Navigation Mobile Helper
+document.addEventListener("DOMContentLoaded", () => {
+  const dropdownNav = document.querySelector(".nav-dropdown");
+  if (dropdownNav) {
+    dropdownNav.addEventListener("click", function(e) {
+      if (window.innerWidth <= 768) {
+        // Toggle logic for mobile since hover does not apply well
+        const menu = this.querySelector(".dropdown-menu");
+        const isExpanded = this.getAttribute("aria-expanded") === "true";
+        this.setAttribute("aria-expanded", !isExpanded);
+        
+        if (!isExpanded) {
+          menu.style.visibility = "visible";
+          menu.style.opacity = "1";
+          menu.style.transform = "translateY(0)";
+        } else {
+          menu.style.visibility = "hidden";
+          menu.style.opacity = "0";
+          menu.style.transform = "translateY(10px)";
+        }
+      }
+    });
+
+    // Close click-outside on mobile
+    document.addEventListener("click", (e) => {
+      if (window.innerWidth <= 768 && !dropdownNav.contains(e.target)) {
+        const menu = dropdownNav.querySelector(".dropdown-menu");
+        dropdownNav.setAttribute("aria-expanded", "false");
+        if(menu) {
+           menu.style.visibility = "hidden";
+           menu.style.opacity = "0";
+           menu.style.transform = "translateY(10px)";
+        }
+      }
+    });
+  }
+});
+

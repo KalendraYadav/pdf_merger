@@ -907,3 +907,118 @@ input[type="range"]::-moz-range-thumb {
     align-items: flex-start;
   }
 }
+
+/* =========================================================
+   SAAS COMPONENTS ARCHITECTURE - Tool Navigation & Dropdown
+   ========================================================= */
+
+/* Dropdown Container */
+.site-header .nav-links .nav-dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.site-header .nav-links .dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Dropdown Menu (Absolute, no layout push) */
+.site-header .nav-links .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background-color: var(--surface-bg, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 200ms ease, transform 200ms ease, visibility 200ms;
+  z-index: 1000;
+  padding: 0.5rem 0;
+}
+
+/* Hover State (Desktop) & Focus-Within (A11y) */
+.site-header .nav-links .nav-dropdown:hover .dropdown-menu,
+.site-header .nav-links .nav-dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown Groups & Links */
+.site-header .nav-links .dropdown-group {
+  padding: 0.5rem 0;
+}
+.site-header .nav-links .dropdown-group:not(:last-child) {
+  border-bottom: 1px solid var(--border-color, #e2e8f0);
+}
+
+.site-header .nav-links .dropdown-header {
+  display: block;
+  padding: 0.25rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted, #64748b);
+  letter-spacing: 0.05em;
+}
+
+.site-header .nav-links .dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--text-main, #0f172a);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: background-color 150ms ease;
+  margin: 0;
+}
+
+.site-header .nav-links .dropdown-menu a:hover {
+  background-color: var(--hover-bg, #f1f5f9);
+}
+
+/* Specific Split UI Modules */
+.split-options-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.split-option-card {
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms;
+}
+
+.split-option-card:focus-within,
+.split-option-card:hover {
+  border-color: var(--accent-color, #3b82f6);
+  background-color: var(--hover-bg, #f8fafc);
+}
+
+.split-option-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.split-option-card input[type="text"],
+.split-option-card input[type="number"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
